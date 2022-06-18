@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <script ></script>
     <title> Tinsae Debele</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 <body>
@@ -40,17 +41,99 @@
         </ul>
     </nav>
       <div class="container">
+
+        <!-- Home Section-->
         <div class="section" id="home">
           <h1> Home</h1>
         </div>
 
         <div class="section" id="about">
-          <h1> about</h1>
-        </div>
-        <div class="section" id ="project">
-          <h1> Project </h1>
         </div>
 
+        <!---Project Section-->
+        <div class="section" id ="project">
+          <div class="discover-page active">
+      
+            <div class="pane-container">
+              <div class="pane" style="--j: 1">
+                <h4>01</h4>
+                <div class="txt-container">
+                  <img src={%static "images/performance.gif"%} />
+                  <h1>performance</h1>
+                  <h3>- performance tracking</h3>
+                  <span>Lorem ipsum dolor sit amet, adipisicing elit! </span>
+                  <ul>
+                    <li>Consectetur adipisicing facilis?</li>
+                    <li>Sed earum in ex quos repellats?</li>
+                    <li>At cum necessitatibus unde ut?</li>
+                  </ul>
+                </div>
+              </div>
+      
+              <div class="pane" style="--j: 2">
+                <h4>02</h4>
+                <div class="txt-container">
+                  <img src={%static "images/cloud-network.gif" %}/>
+                  <h1>cloud services</h1>
+                  <h3>- best cloud services providers</h3>
+                  <span>Lorem ipsum dolor sit amet consectetur.</span>
+                  <ul>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Consectetur adipisicing facilis?</li>
+                  </ul>
+                </div>
+              </div>
+      
+              <div class="pane" style="--j: 3">
+                <h4>03</h4>
+                <div class="txt-container">
+                  <img src={%static "images/media.gif" %}/>
+                  <h1>media</h1>
+                  <h3>- media devices & personnels</h3>
+                  <span>Lorem ipsum dolor, sit amet consectetur.</span>
+                  <ul>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Ab maiores eligendi animi at.</li>
+                    <li>Fugiat voluptatem repellat.</li>
+                  </ul>
+                </div>
+              </div>
+      
+              <div class="pane" style="--j: 4">
+                <h4>04</h4>
+                <div class="txt-container">
+                  <img src={%static "images/security.gif" %}/>
+                  <h1>security</h1>
+                  <h3>- high security</h3>
+                  <span
+                    >Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span
+                  >
+                  <ul>
+                    <li>Fugiat corporis voluptatem repellat.</li>
+                  </ul>
+                </div>
+              </div>
+      
+              <div class="pane" style="--j: 5">
+                <h4>05</h4>
+                <div class="txt-container">
+                  <img src={%static "images/tech-support.gif" %} />
+                  <h1>tech-support</h1>
+                  <h3>- support from experts</h3>
+                  <span
+                    >Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span
+                  >
+                  <ul>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Consectetur adipisicing facilis?</li>
+                    <li>Ab maiores eligendi animi at.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---Project Section-->
         <div class="section" id="contact">
             <div class="bubble">
                 <span style="--i:11;"></span>
@@ -141,7 +224,7 @@
               </div>
            </div>
             </section>
-          </div>
+        </div>
     
       </div>
       <script> 
@@ -166,8 +249,76 @@
                       li.classList.add("active");
                   }});
             };
-          }}
+            const panes = document.querySelectorAll('.pane-container .pane');
 
+for (let j = 0; j < panes.length; j++) {
+  const btn = document.createElement('div');
+  btn.classList.add('btn');
+
+  btn.innerHTML = `  <box-icon class="menu" name="right-arrow-alt"></box-icon>`;
+  panes[j].appendChild(btn);
+
+  panes[j].addEventListener('mouseover', () => {
+    panes.forEach((pane) => {
+      pane.style.background = 'rgba(0, 0, 0, 0.552)';
+    });
+    panes[j].style.background = 'transparent';
+  });
+
+  panes[j].addEventListener('mouseout', () => {
+    panes.forEach((pane) => {
+      pane.style.background = '';
+    });
+    panes[j].style.background = '';
+  });
+}
+
+const btn = document.querySelector('.discover');
+const curtains = document.querySelectorAll('.curtain');
+const discover_page = document.querySelector('.discover-page');
+const pane_container = document.querySelector('.pane-container');
+
+btn.addEventListener('click', discoverPage);
+
+function discoverPage() {
+  curtains.forEach((curtain) => {
+    curtain.classList.add('active');
+  });
+  discover_page.classList.add('active');
+}
+
+const back = document.querySelector('.ret.left');
+const nxt = document.querySelector('.ret.right');
+
+back.addEventListener('click', () => {
+  curtains.forEach((curtain) => {
+    curtain.classList.remove('active');
+  });
+  discover_page.classList.remove('active');
+});
+
+var index = 0;
+
+function nxtpane() {
+  panes.forEach((pane) => {
+    pane.style.background = 'rgba(0, 0, 0, 0.552)';
+  });
+
+  panes[index].style.background = 'transparent';
+
+  index++;
+
+  if (index >= panes.length) {
+    index = 0;
+  }
+}
+
+nxt.addEventListener('click', nxtpane);
+            
+
+
+
+          }}
 
       </script>
     
