@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <script ></script>
+    <title> Tinsae Debele</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class='navigation'>
+        <ul>
+         
+          <li class='list active' ">
+            <a class="home" href='#home'>
+              <span class='text'>Home</span>
+              <span class='icon'><i class="bi bi-house-door"></i></span>
+            </a>
+          </li>
+          <li class='list'>
+            <a class="about"  href='#about'>
+              <span class='text'>About</span>
+              <span class='icon'><i class="bi bi-file-earmark-person"></i></span>
+            </a>
+          </li>
+          <li class='list'>
+            <a class="project" href='#project'>
+              <span class='text'>Project</span>
+              <span class='icon'><i class="bi bi-kanban"></i></span>
+            </a>
+          </li>
+          <li class='list'>
+            <a class='contact' href='#contact'>
+              <span class='text'>Contact</span>
+              <span class='icon'><i class="bi bi-person-lines-fill"></i></span>
+            </a>
+          </li> 
+          <div class="indicator"></div>
+        </ul>
+      </nav>
+      <div class="container">
+        <div class="section" id="home">
+          <h1> Home</h1>
+        </div>
+
+        <div class="section" id="about">
+          <h1> about</h1>
+        </div>
+        <div class="section" id ="project">
+          <h1> Project </h1>
+        </div>
+
+        <div class="section" id="contact">
+            <div class="bubble">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+      <script> 
+            {{  
+                const sections = document.querySelectorAll(".section");
+                const navLi = document.querySelectorAll(".list");
+
+                window.onscroll = () => {
+                  var current = "";
+
+                  sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+              
+                    if (pageYOffset >= sectionTop - 150) {
+                      current = section.getAttribute("id"); 
+                    }
+                    });
+                  navLi.forEach((li) => {
+                    const inner_tag = li.getElementsByTagName('a')
+                    li.classList.remove("active");
+                    if (inner_tag[0].classList.contains(current)) { 
+                      li.classList.add("active");
+                  }});
+            };
+          }}
+
+
+      </script>
+    
+</body>
+</html>
