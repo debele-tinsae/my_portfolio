@@ -19,5 +19,6 @@ from my_web import views
 from django.conf.urls import include
 urlpatterns = [
     path('myweb/', include('my_web.urls'), name='index' ),
+    path('', views.index, name="index" ),
     path('admin/', admin.site.urls),
 ]
